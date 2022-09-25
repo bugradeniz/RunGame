@@ -8,11 +8,10 @@ public class CameraControl : MonoBehaviour
     public Vector3 target_offset;
 
 
-    // Start is called before the first frame update
     void Start()
     {
+        // kameranin sahnedeki konumu takip mesafesi olarak ayarlandi
         target_offset = transform.position - target.position;
-
 
     }
 
@@ -21,7 +20,8 @@ public class CameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position , target.position + target_offset, .125f);
+        // kameranin karakteri takip etmesi saglandi
+        transform.position = Vector3.Lerp(transform.position , target.position + target_offset, .1f);
 
     }
 }
