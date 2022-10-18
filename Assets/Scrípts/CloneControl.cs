@@ -23,5 +23,16 @@ public class CloneControl : MonoBehaviour
         _navMashAgent.SetDestination(target.transform.position);
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        // Clonlarin engellere carptiginda yok olmasi saglandi
+        if (other.CompareTag("spikeBox"))
+        {
+            // karakter sayisini tutan degisken azaltildi
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentCharacterNum--;
+            gameObject.SetActive(false);
+            
+        }
+    }
 
 }
