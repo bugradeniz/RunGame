@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - spikeBox
+  - Obstacle
+  - Addition
+  - Subtraction
+  - Multiplication
+  - Division
   layers:
   - Default
   - TransparentFX

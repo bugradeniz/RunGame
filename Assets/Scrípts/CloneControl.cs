@@ -29,8 +29,7 @@ public class CloneControl : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             // karakter sayisini tutan degisken azaltildi
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentCharacterNum--;
-            gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().removeClone(this.gameObject);
             
         }
     }
