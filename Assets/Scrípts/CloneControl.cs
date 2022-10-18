@@ -26,7 +26,7 @@ public class CloneControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Clonlarin engellere carptiginda yok olmasi saglandi
-        if (other.CompareTag("spikeBox"))
+        if (other.CompareTag("Obstacle"))
         {
             // karakter sayisini tutan degisken azaltildi
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentCharacterNum--;

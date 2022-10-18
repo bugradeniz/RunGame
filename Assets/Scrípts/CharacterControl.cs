@@ -38,10 +38,10 @@ public class CharacterControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Karakterin islem kapilarindan gectigini algilayan if
-        if (other.name=="x2" || other.name == "+3" || other.name == "-2" || other.name == "/5" || other.name == "/3" || other.name == "-10")
+        if (other.tag=="Addition" || other.tag == "Subtraction" || other.tag == "Multiplication" || other.tag == "Division" )
         {
             Debug.Log("on trigger a girildi");
-            gameController.cloneManager(other.name, other.transform);
+            gameController.cloneManager(int.Parse(other.name), other.tag, other.transform); 
         }
     }
 }

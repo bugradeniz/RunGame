@@ -44,15 +44,15 @@ public class GameController : MonoBehaviour
     }
 
 
-    // puan kapilarindan gectiginde kapidaki isleme gore klon ekleyen veya cikartan fonksiyon eklendi
-    public void cloneManager(string operation,Transform position) {
+    // puan kapilarindan gectiginde kapidaki isleme ve sayiya gore klon ekleyen veya cikartan fonksiyon eklendi
+    public void cloneManager(int value,string operation,Transform position) {
 
         int  newCharacterNum; // islem sonrasi yeni klon sayisini tutar 
         int change ;        // yeni klon sayisi ile eski sayi arasindaki farki tutar
         switch (operation)
         {
-            case "x2":
-                newCharacterNum = currentCharacterNum *2;
+            case "Multiplication":
+                newCharacterNum = currentCharacterNum * value; 
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
@@ -76,8 +76,8 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////
             ///
 
-            case "+3":
-                newCharacterNum = currentCharacterNum + 3;
+            case "Addition":
+                newCharacterNum = currentCharacterNum + value;
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
@@ -100,8 +100,8 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
-            case "-2":
-                newCharacterNum = currentCharacterNum - 2;
+            case "Subtraction":
+                newCharacterNum = currentCharacterNum - value;
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
@@ -125,58 +125,9 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
-            case "/3":
-                newCharacterNum = currentCharacterNum /3;
-                change = newCharacterNum - currentCharacterNum;
-
-                if (change > 0)
-                {
-                    for (int i = 0; i < change; i++)
-                    {
-                        addClone(position);
-                        Debug.Log("clone eklendi");
-                    }
-                }
-                else if (change < 0)
-                {
-                    for (int i = 0; i > change; i--)
-                    {
-                        removeClone();
-                        Debug.Log("clone cikartildi");
-                    }
-                }
-
-                break;
-            /////////////////////////////////////////////////////////
-            ///
-
-            case "-10":
-                newCharacterNum = currentCharacterNum -10;
-                change = newCharacterNum - currentCharacterNum;
-
-                if (change > 0)
-                {
-                    for (int i = 0; i < change; i++)
-                    {
-                        addClone(position);
-                        Debug.Log("clone eklendi");
-                    }
-                }
-                else if (change < 0)
-                {
-                    for (int i = 0; i > change; i--)
-                    {
-                        removeClone();
-                        Debug.Log("clone cikartildi");
-                    }
-                }
-
-                break;
-            /////////////////////////////////////////////////////////
-            ///
-
-            case "/5":
-                newCharacterNum = ((currentCharacterNum - 1)    / 5    )+1 ; // yukari yuvarlanmasi icin bolme islemi birazcik degistirildi
+           
+            case "Division":
+                newCharacterNum = ((currentCharacterNum - 1)    / value) +1 ; // yukari yuvarlanmasi icin bolme islemi birazcik degistirildi
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
