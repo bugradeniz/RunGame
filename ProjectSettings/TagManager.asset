@@ -9,6 +9,8 @@ TagManager:
   - Subtraction
   - Multiplication
   - Division
+  - Pusher
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public List<GameObject> clonePool;
     public List<GameObject> dieEffectPool;
     public List<GameObject> bornEffectPool;
+    public List<GameObject> splashEffectPool;
     void Start()
     {
 
@@ -21,31 +22,13 @@ public class GameController : MonoBehaviour
     {
         // tusa basildiginda klonlarin olusturulmasi saglandi.
         // ileride degistirilecek
-        // klone havuzundaki aktif olmayan ilk klonu konumlandirip aktif hale getirilmesi saglandi instantiate komutu performans icin kullanilmayacak
+        
 
         if (Input.GetMouseButtonDown(1))
         {
 
             addClone(startPoint.transform);
-            /*
-            foreach (GameObject clone in clonePool)
-            {
-                if (!clone.activeInHierarchy)
-                {
-
-                    clone.transform.position = startPoint.transform.position;
-                    clone.SetActive(true);
-
-                    // Karakter sayisini tutan degisken artirildi
-                    currentCharacterNum++;
-
-
-                    break;
-                }
-            }
-            */
-            // Instantiate(clonePrefab, startPoint.transform.position, Quaternion.identity);
-
+            
         }
     }
 
@@ -58,19 +41,20 @@ public class GameController : MonoBehaviour
         int change;        // yeni klon sayisi ile eski sayi arasindaki farki tutar
         switch (operation)
         {
+            // carpma islemi   
             case "Multiplication":
-                newCharacterNum = currentCharacterNum * value;
-                change = newCharacterNum - currentCharacterNum;
+                newCharacterNum = currentCharacterNum * value;   // 1. asama islem yapilip yeni sayi bulunuyor
+                change = newCharacterNum - currentCharacterNum;   //2. asama yeni sayi ile eskisi arasindaki fark bulunuyor
 
-                if (change > 0)
+                if (change > 0)                     //3. asama eger fark sifirdan buyukse fark sayisi kadar klon ekleniyor.
                 {
                     for (int i = 0; i < change; i++)
                     {
-                        addClone(position);
+                        addClone(position);                 
                         Debug.Log("clone eklendi");
                     }
                 }
-                else if (change < 0)
+                else if (change < 0)                    // eger fark sifirdan kucukse fark sayisi kadar klon cikartiliyor.
                 {
                     for (int i = 0; i > change; i--)
                     {
@@ -82,9 +66,11 @@ public class GameController : MonoBehaviour
 
             /////////////////////////////////////////////////////
             ///
+            
 
+                // toplama islemi
             case "Addition":
-                newCharacterNum = currentCharacterNum + value;
+                newCharacterNum = currentCharacterNum + value; //islem
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
@@ -108,8 +94,9 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
+                // cikarma islemi
             case "Subtraction":
-                newCharacterNum = currentCharacterNum - value;
+                newCharacterNum = currentCharacterNum - value; // islem
                 change = newCharacterNum - currentCharacterNum;
 
                 if (change > 0)
@@ -133,7 +120,7 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
-
+                // bolme islemi
             case "Division":
                 newCharacterNum = ((currentCharacterNum - 1) / value) + 1; // yukari yuvarlanmasi icin bolme islemi birazcik degistirildi
                 change = newCharacterNum - currentCharacterNum;
@@ -173,6 +160,7 @@ public class GameController : MonoBehaviour
     }
 
     // bir adet klon ekleyen fonksiyon eklendi
+    // klone havuzundaki aktif olmayan ilk klonu konumlandirip aktif hale getirilmesi saglandi instantiate komutu performans icin kullanilmayacak
     private void addClone(Transform position)
     {
         foreach (GameObject clone in clonePool)
@@ -193,7 +181,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // bir adet klon cikartan fonksiyon eklendi
+    // bir adet klon cikartan fonksiyon eklendi. islem kapilerindaki yok olmalarda kullaniliyor
+    // klone havuzundaki aktif olan ilk klonudeaktif hale getirilmesi saglandi destroy komutu performans icin kullanilmayacak
     private void removeClone()
     {
         if (currentCharacterNum > 1) // 1 den daha az olmasi engelleniyor
@@ -225,14 +214,21 @@ public class GameController : MonoBehaviour
 
     }
 
-    //Spesifik bir klonu cikartan fonksiyon
-    public void removeClone(GameObject clone)
+    //Spesifik bir klonun herhangi bir sebepten olmesi ile klonu cikartan fonksiyon
+    public void removeClone(GameObject clone,string reason)
     {
 
         clone.SetActive(false);
         currentCharacterNum--; // Karakter sayisini tutan degisken azaltildi
-
-        dieEffect(clone.transform);
+        if (reason=="Hammer")
+        {
+            hammerEffect(clone.transform);
+        }
+        else
+        {
+            dieEffect(clone.transform);
+        }
+        
 
 
     }
@@ -256,6 +252,26 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    //Belirli bir konumda  yere yapisma efekti gerceklestiren fonksiyon
+    private void hammerEffect(Transform transform)
+    {
+        foreach (GameObject effect in splashEffectPool)
+        {
+            if (!effect.activeInHierarchy)
+            {
+
+
+                effect.transform.position = transform.position;
+                effect.SetActive(true);
+
+
+                break;
+            }
+        }
+    }
+
+
+
     //Belirli bir konumda  dogma efekti gerceklestiren fonksiyon
     private void bornEffect(Transform transform)
     {
