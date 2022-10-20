@@ -40,7 +40,6 @@ public class CharacterControl : MonoBehaviour
         // Karakterin islem kapilarindan gectigini algilayan if
         if (other.tag == "Addition" || other.tag == "Subtraction" || other.tag == "Multiplication" || other.tag == "Division")
         {
-            Debug.Log("on trigger islem e girildi");
             gameController.cloneManager(int.Parse(other.name), other.tag, other.transform);
         }
 
@@ -53,13 +52,11 @@ public class CharacterControl : MonoBehaviour
         {
             if (other.name == "LeftPusher")
             {
-                Debug.Log("on trigger pusher  a girildi");
                 transform.Translate(Vector3.left * 0f * Time.deltaTime);
             }
             else if(other.name == "RightPusher")
             {
 
-                Debug.Log("on trigger pusher  a girildi");
                 transform.Translate(Vector3.right * 0f * Time.deltaTime);
             }
         }

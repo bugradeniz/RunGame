@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);                 
-                        Debug.Log("clone eklendi");
+                        
                     }
                 }
                 else if (change < 0)                    // eger fark sifirdan kucukse fark sayisi kadar klon cikartiliyor.
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        Debug.Log("clone cikartildi");
+                        
                     }
                 }
                 break;
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                        Debug.Log("clone eklendi");
+                        
                     }
                 }
                 else if (change < 0)
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        Debug.Log("clone cikartildi");
+                        
                     }
                 }
 
@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                        Debug.Log("clone eklendi");
+                       
                     }
                 }
                 else if (change < 0)
@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        Debug.Log("clone cikartildi");
+                        
                     }
                 }
 
@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                        Debug.Log("clone eklendi");
+                        
                     }
                 }
                 else if (change < 0)
@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        Debug.Log("clone cikartildi");
+                        
                     }
                 }
 
@@ -153,10 +153,10 @@ public class GameController : MonoBehaviour
 
 
             default:
-                Debug.Log("hic bir case e girmedi");
+                
                 break;
         }
-        Debug.Log("karakter sayisi:  " + currentCharacterNum);
+       
     }
 
     // bir adet klon ekleyen fonksiyon eklendi

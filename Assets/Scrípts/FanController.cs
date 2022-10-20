@@ -7,6 +7,9 @@ public class FanController : MonoBehaviour
     public Animator animator;
     public float delay;
     public BoxCollider wind;
+
+    //pervane animasyonu sonunda aktif olan, animasyonu ve ruzgar efektini durduran, belirli bir beklemeden sonra 
+    //tekrar animasyonu ve ruzgar efektini devreye sokan animasyon olayi
     public void AnimationEnd()
     {
        

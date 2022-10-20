@@ -37,7 +37,6 @@ public class CloneControl : MonoBehaviour
         // hammer a carptiginda farkli effekt olusturmasi saglandi 
         if (other.CompareTag("Hammer"))
         {
-            Debug.Log("hammer a carptiiiiiiiiii");
             gameController.removeClone(this.gameObject,other.tag);
 
         }
@@ -53,13 +52,10 @@ public class CloneControl : MonoBehaviour
         {
             if (other.name == "LeftPusher")
             {
-                Debug.Log("on trigger pusher  a girildi");
                 transform.Translate(Vector3.left * 4f * Time.deltaTime);
             }
             else
             {
-
-                Debug.Log("on trigger pusher  a girildi");
                 transform.Translate(Vector3.right * 4f * Time.deltaTime);
             }
         }
