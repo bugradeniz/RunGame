@@ -49,10 +49,10 @@ BoxCollider:
   m_GameObject: {fileID: 4595757411896680568}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.46165752, y: 0.04189962, z: 0.47452462}
-  m_Center: {x: -2.199911, y: -0.5216683, z: -0.0065339208}
+  m_Size: {x: 0.42386532, y: 0.011073828, z: 0.4212737}
+  m_Center: {x: -2.2093596, y: -0.5379642, z: -0.00052165985}
 --- !u!1 &5956757041906720218
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 5956757041906720212}
   m_Layer: 0
   m_Name: balyoz
-  m_TagString: Hammer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
