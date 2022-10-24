@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,32 +6,161 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
+    [Header("Controllers")]
+    public CameraControl cameraControl;
+    public CharacterControl characterControl;
+    public EnemyController enemyController;
+
+    [Header("Reference Points")]
     public GameObject startPoint;
     public GameObject endPoint;
-    public int currentCharacterNum = 1;
+    
 
+    [Header("Pools")]
     public List<GameObject> clonePool;
+    public List<GameObject> enemyPool;
     public List<GameObject> dieEffectPool;
     public List<GameObject> bornEffectPool;
     public List<GameObject> splashEffectPool;
+    [Header("Level Data")]
+    public int currentCharacterNum = 1;
+    public int enemyNum;
+    public bool isEnding;
     void Start()
     {
+        // oyun sonundaki dusmanlar otomatik olusturuluyor.
+        createEnemies();
+    }
 
+    // Belirlenen deger kadar dusman olusturan fonksiyon.
+    public void createEnemies()
+    {
+        for (int i = 0; i < enemyNum; i++)
+        {
+            enemyPool[i].SetActive(true);
+        }
     }
 
     void Update()
     {
-        // tusa basildiginda klonlarin olusturulmasi saglandi.
-        // ileride degistirilecek
         
 
-        if (Input.GetMouseButtonDown(1))
+       
+        // son bolumune gelindiginde icine girilen if
+        if (isEnding)
+        {
+            // dusman biterse kazanilip son gorevi deaktif.
+            if (enemyNum == 0)
+            {
+                win();
+                isEnding = false;
+            }// dusman bitmezse ve karakter sayimiz 1 e duserse kaybedilip son gorevi deaktif ediliyor.
+            else if (currentCharacterNum==1)
+            {
+                lose();
+                isEnding = false;
+            }
+
+
+        }
+        else
         {
 
-            addClone(startPoint.transform);
-            
+            // tusa basildiginda klonlarin olusturulmasi saglandi.
+            // ileride kaldirilacak
+            if (Input.GetMouseButtonDown(1))
+            {
+
+                addClone(startPoint.transform);
+            }
+
+
+        }
+
+
+    }
+
+    // kaybedildiginde calisan fonksiyon. gelistirilecek
+    public void lose()
+    {
+        stopEnemies();
+        Debug.Log("You Lose");
+    }
+
+    // kazanildiginda calisan fonksiyon. gelistirilecek
+    public void win()
+    {
+        stopClones();
+        Debug.Log("You Win");
+
+    }
+
+    // oyun bitiminde devreye giren fonksiyon
+    // oyun sonu gorevini aktif ediyor, kameranin oyun son gorevini aktif ediyor. ana karakterin oyun sonu gorevini aktif ediyor. 
+    // dusmanlari aktif ediyor.
+    public void ending()
+    {
+        isEnding = true;
+        cameraControl.ending();
+        characterControl.ending();
+        activateEnemies();
+    }
+
+    // klonlari durduran fonksiyon.
+    private void stopClones()
+    {
+        foreach (GameObject clone in clonePool)
+        {
+            if (clone.activeInHierarchy)
+            {
+
+                clone.GetComponent<CloneControl>().stopRuning();
+
+
+
+            }
         }
     }
+    // dusmanlari durduran fonksiyon.
+    private void stopEnemies()
+    {
+        foreach (GameObject enemy in enemyPool)
+        {
+            if (enemy.activeInHierarchy)
+            {
+
+                enemy.GetComponent<EnemyController>().stopRuning();
+
+
+
+            }
+        }
+    }
+
+    // serbest klon tarafindan cagirildigi zaman kendisini klon havuzuna ekliyip karakter sayisini arttiran fonksiyon.
+    public void addFreeClone(GameObject freeClone)
+    {
+        
+        clonePool.Add(freeClone);
+        currentCharacterNum++;
+    }
+
+    // dusmanlari aktif hale getiren kosmayi baslatan fonksiyon
+    private void activateEnemies()
+    {
+        foreach (GameObject enemy in enemyPool)
+        {
+            if (enemy.activeInHierarchy)
+            {
+
+                enemy.GetComponent<EnemyController>().startRuning();
+
+
+                
+            }
+        }
+    }
+
 
 
     // puan kapilarindan gectiginde kapidaki isleme ve sayiya gore klon ekleyen veya cikartan fonksiyon eklendi
@@ -50,8 +180,8 @@ public class GameController : MonoBehaviour
                 {
                     for (int i = 0; i < change; i++)
                     {
-                        addClone(position);                 
-                        
+                        addClone(position);
+
                     }
                 }
                 else if (change < 0)                    // eger fark sifirdan kucukse fark sayisi kadar klon cikartiliyor.
@@ -59,16 +189,16 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        
+
                     }
                 }
                 break;
 
             /////////////////////////////////////////////////////
             ///
-            
 
-                // toplama islemi
+
+            // toplama islemi
             case "Addition":
                 newCharacterNum = currentCharacterNum + value; //islem
                 change = newCharacterNum - currentCharacterNum;
@@ -78,7 +208,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                        
+
                     }
                 }
                 else if (change < 0)
@@ -86,7 +216,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        
+
                     }
                 }
 
@@ -94,7 +224,7 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
-                // cikarma islemi
+            // cikarma islemi
             case "Subtraction":
                 newCharacterNum = currentCharacterNum - value; // islem
                 change = newCharacterNum - currentCharacterNum;
@@ -104,7 +234,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                       
+
                     }
                 }
                 else if (change < 0)
@@ -112,7 +242,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        
+
                     }
                 }
 
@@ -120,7 +250,7 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////////////////
             ///
 
-                // bolme islemi
+            // bolme islemi
             case "Division":
                 newCharacterNum = ((currentCharacterNum - 1) / value) + 1; // yukari yuvarlanmasi icin bolme islemi birazcik degistirildi
                 change = newCharacterNum - currentCharacterNum;
@@ -130,7 +260,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i < change; i++)
                     {
                         addClone(position);
-                        
+
                     }
                 }
                 else if (change < 0)
@@ -138,7 +268,7 @@ public class GameController : MonoBehaviour
                     for (int i = 0; i > change; i--)
                     {
                         removeClone();
-                        
+
                     }
                 }
 
@@ -148,20 +278,16 @@ public class GameController : MonoBehaviour
 
 
 
-
-
-
-
             default:
-                
+
                 break;
         }
-       
+
     }
 
     // bir adet klon ekleyen fonksiyon eklendi
     // klone havuzundaki aktif olmayan ilk klonu konumlandirip aktif hale getirilmesi saglandi instantiate komutu performans icin kullanilmayacak
-    private void addClone(Transform position)
+    public void addClone(Transform position)
     {
         foreach (GameObject clone in clonePool)
         {
@@ -214,21 +340,41 @@ public class GameController : MonoBehaviour
 
     }
 
-    //Spesifik bir klonun herhangi bir sebepten olmesi ile klonu cikartan fonksiyon
-    public void removeClone(GameObject clone,string reason)
+    //Spesifik bir klonun belirli bir sebepten olmesi ile klonu cikartan ve o sebebe gore effekt olusturan fonksiyon
+    public void removeClone(GameObject clone, string reason)
     {
 
         clone.SetActive(false);
         currentCharacterNum--; // Karakter sayisini tutan degisken azaltildi
-        if (reason=="Hammer")
+
+        if (reason == "Hammer")
         {
+           
             hammerEffect(clone.transform);
-        }
-        else
+        }else if (reason== "Enemy")
         {
             dieEffect(clone.transform);
+            
+            enemyNum--;
+        }     
+        else
+        {
+            
+            dieEffect(clone.transform);
         }
-        
+
+
+
+    }
+
+    //dusmanin kendini yok etmesi icin cagirdigi fonksiyon 
+    public void removeEnemy(GameObject clone)
+    {
+
+        clone.SetActive(false);
+        dieEffect(clone.transform);
+       
+
 
 
     }

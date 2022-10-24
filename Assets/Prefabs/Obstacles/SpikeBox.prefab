@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8458347009740563797}
   m_Layer: 0
   m_Name: spike_3
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 8458347009740592726}
   m_Layer: 0
   m_Name: spike_7
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 8458347009847074621}
   m_Layer: 0
   m_Name: spike_21
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 8458347009891182051}
   m_Layer: 0
   m_Name: spike_12
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 8458347010072843635}
   m_Layer: 0
   m_Name: spike_5
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 8458347010144395213}
   m_Layer: 0
   m_Name: spike_20
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 8458347010184816373}
   m_Layer: 0
   m_Name: spike_6
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 8458347010204926534}
   m_Layer: 0
   m_Name: spike_4
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 8458347010307961905}
   m_Layer: 0
   m_Name: spike_17
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 8458347010342459240}
   m_Layer: 0
   m_Name: spike_1
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 8458347010384655277}
   m_Layer: 0
   m_Name: spike_2
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 8458347010718079124}
   m_Layer: 0
   m_Name: spike_24
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 8458347010980889434}
   m_Layer: 0
   m_Name: spike_16
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 8458347011042997315}
   m_Layer: 0
   m_Name: spike_19
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 8458347011185735667}
   m_Layer: 0
   m_Name: spike_18
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1494,7 +1494,7 @@ GameObject:
   - component: {fileID: 631163130}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 8458347011249756019}
   m_Layer: 0
   m_Name: spike_9
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 8458347011270589768}
   m_Layer: 0
   m_Name: spike_10
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1779,7 +1779,7 @@ GameObject:
   - component: {fileID: 8458347011378821743}
   m_Layer: 0
   m_Name: spike_23
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1874,7 +1874,7 @@ GameObject:
   - component: {fileID: 8458347011437577412}
   m_Layer: 0
   m_Name: spike_13
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1969,7 +1969,7 @@ GameObject:
   - component: {fileID: 8458347011454046162}
   m_Layer: 0
   m_Name: spike_22
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 8458347011511853693}
   m_Layer: 0
   m_Name: spike_14
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2159,7 +2159,7 @@ GameObject:
   - component: {fileID: 8458347011524444148}
   m_Layer: 0
   m_Name: spike_11
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2254,7 +2254,7 @@ GameObject:
   - component: {fileID: 8458347011591005847}
   m_Layer: 0
   m_Name: spike_8
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2349,7 +2349,7 @@ GameObject:
   - component: {fileID: 8458347011747432917}
   m_Layer: 0
   m_Name: spike_15
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

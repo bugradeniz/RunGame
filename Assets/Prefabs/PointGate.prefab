@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 883915906925709368}
   - component: {fileID: 883915906925709369}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 30
   m_TagString: Addition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 883915907039074794}
   m_Layer: 0
   m_Name: column (1)
-  m_TagString: Untagged
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 883915907284078503}
   - component: {fileID: 883915907284078502}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 10
   m_TagString: Multiplication
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 883915908452130313}
   m_Layer: 0
   m_Name: column (2)
-  m_TagString: Untagged
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 3910310716116243982}
   m_Layer: 0
   m_Name: column
-  m_TagString: Untagged
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

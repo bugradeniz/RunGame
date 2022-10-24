@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1874205969041696539}
   m_Layer: 0
   m_Name: igne.014
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6243038287328767442}
   m_Layer: 0
   m_Name: igne.006
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6986999107929656452}
   m_Layer: 0
   m_Name: igne.010
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 7260688450220588918}
   m_Layer: 0
   m_Name: igne.013
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 7248796122889011879}
   m_Layer: 0
   m_Name: igne.001
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 782077529634929305}
   m_Layer: 0
   m_Name: igne.007
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 1560063927569375676}
   m_Layer: 0
   m_Name: igne.012
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 6308788242735643685}
   m_Layer: 0
   m_Name: igne.008
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 8385339677048268979}
   m_Layer: 0
   m_Name: igne.011
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1341,7 +1341,7 @@ GameObject:
   - component: {fileID: 2259633374087867632}
   m_Layer: 0
   m_Name: igne.005
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 4275277385709824406}
   m_Layer: 0
   m_Name: igne.003
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 7066874151713983216}
   m_Layer: 0
   m_Name: igne.009
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1626,7 +1626,7 @@ GameObject:
   - component: {fileID: 7040823243752833632}
   m_Layer: 0
   m_Name: igne.015
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1978,7 +1978,7 @@ GameObject:
   - component: {fileID: 866486242293055295}
   m_Layer: 0
   m_Name: igne.004
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2073,7 +2073,7 @@ GameObject:
   - component: {fileID: 1044904323059998015}
   m_Layer: 0
   m_Name: igne.002
-  m_TagString: Obstacle
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

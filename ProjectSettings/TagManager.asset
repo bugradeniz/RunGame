@@ -11,6 +11,12 @@ TagManager:
   - Division
   - Pusher
   - Hammer
+  - Clone
+  - Enemy
+  - EndTrigger
+  - Column
+  - Spike
+  - FreeClone
   layers:
   - Default
   - TransparentFX

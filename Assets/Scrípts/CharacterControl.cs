@@ -6,34 +6,86 @@ public class CharacterControl : MonoBehaviour
 {
 
     public GameController gameController;
+    public bool isEnding;
+    public Transform endigPoint;
+    public bool isRuning;
+    public Animator animator;
+
+    
     void Start()
     {
+
+        // baslangicta ileri kosma ve sag sola kontrol devreye giriyor.
+        // bitis gorevi deaktif tutuluyor.
+
+        isRuning = true;
+        isEnding = false;
     }
 
-    private void FixedUpdate()
+    
+    // oyun sonuna gelindiginde degistirilen paramatereler.
+    // Ileri kosma ve sag sola kontrol duruyor.
+    // Belirli bir niktaya ilerleme basliyor.
+    public void ending()
     {
-        // karaktere ileri dogru bir hiz verir
-        transform.Translate(Vector3.forward * .5f * Time.deltaTime);
+        isRuning = false;
+        isEnding = true;
+    }
 
+    //Animasyonu ve ilerlemeyi baslatan fonksiyon
+    public void startRuning()
+    {
+        isRuning = true;
+        animator.SetBool("run", true);
+    }
 
+    //Animasyonu ve ilerlemeyi durduran fonksiyon
+    public void stopRuning()
+    {
+        isRuning = false;
+        animator.SetBool("run", false);
 
     }
+
     private void Update()
     {
-        // Mouse tiklanip suruklendiginde o yonde kaydirilir.
-        // Ilerde ekrana dokunma ve surukleme olarak degistirilecek
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (isRuning)
         {
-            if (Input.GetAxis("Mouse X") < 0)
+            // karaktere ileri dogru bir hiz verir
+            transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+
+
+            // Mouse tiklanip suruklendiginde o yonde kaydirilir.
+            // Ilerde ekrana dokunma ve surukleme olarak degistirilecek
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - 2f, transform.position.y, transform.position.z), .01f);
+                if (Input.GetAxis("Mouse X") < 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - 2f, transform.position.y, transform.position.z), .01f);
+                }
+                if (Input.GetAxis("Mouse X") > 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z), .01f);
+                }
+
             }
-            if (Input.GetAxis("Mouse X") > 0)
+
+
+        }
+        if (isEnding)
+        {
+            //oyun sonunda karakteri belirli noktaya yavasca ilerletir
+            transform.position = Vector3.Lerp(transform.position, endigPoint.position, 0.05f);
+            //belirli noktaya geldigini algilayan if
+            if ((transform.position - endigPoint.position).sqrMagnitude < 0.1f)
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z), .01f);
+                stopRuning();
             }
 
         }
+
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -43,22 +95,43 @@ public class CharacterControl : MonoBehaviour
             gameController.cloneManager(int.Parse(other.name), other.tag, other.transform);
         }
 
+        // Karakterin islem kapilarindan gectigini algilayan if
+        if (other.tag == "FreeClone")
+        {
+            other.gameObject.GetComponent<FreeCloneControl>().takeClone();
+        }
+
+        // Oyun sonuna gelindigini algilayan if
+        if (other.tag == "EndTrigger")
+        {
+            gameController.ending();
+        }
+
+       
+        
+
+
 
     }
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
-        // pervane etkisini yaratan sola ve saga itme alanlarini algilayan ifler
-        if (other.tag == "Pusher")
+
+
+        // oyun icinde karakterimizin takili kamasini engellemeye calisan kod
+        // bu kodu hic begenmedim sonra degistiricem
+        if (col.gameObject.CompareTag("Column")|| col.gameObject.CompareTag("Spike"))
         {
-            if (other.name == "LeftPusher")
+            if (transform.position.x >= 0)
             {
-                transform.Translate(Vector3.left * 0f * Time.deltaTime);
+                transform.Translate(Vector3.left * 10f * Time.deltaTime);
             }
-            else if(other.name == "RightPusher")
+            else
             {
 
-                transform.Translate(Vector3.right * 0f * Time.deltaTime);
+                transform.Translate(Vector3.right * 10f * Time.deltaTime);
             }
         }
     }
+
+
 }
