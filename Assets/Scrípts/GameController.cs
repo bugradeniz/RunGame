@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class GameController : MonoBehaviour
     [Header("Reference Points")]
     public GameObject startPoint;
     public GameObject endPoint;
-    
+    public GameObject finishLine;
+
+    [Header("UI")]
+    public Slider progressBar;
+
 
     [Header("Pools")]
     public List<GameObject> clonePool;
@@ -25,9 +30,12 @@ public class GameController : MonoBehaviour
     [Header("Level Data")]
     public int currentCharacterNum = 1;
     public int enemyNum;
+    float maxDistance;
     public bool isEnding;
+
     void Start()
     {
+        maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
         // oyun sonundaki dusmanlar otomatik olusturuluyor.
         createEnemies();
     }
@@ -43,9 +51,9 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+        progressBar.value = 1 - (getCurrentDistance() / maxDistance);
 
-       
+
         // son bolumune gelindiginde icine girilen if
         if (isEnding)
         {
@@ -55,7 +63,7 @@ public class GameController : MonoBehaviour
                 win();
                 isEnding = false;
             }// dusman bitmezse ve karakter sayimiz 1 e duserse kaybedilip son gorevi deaktif ediliyor.
-            else if (currentCharacterNum==1)
+            else if (currentCharacterNum == 1)
             {
                 lose();
                 isEnding = false;
@@ -65,6 +73,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+
 
             // tusa basildiginda klonlarin olusturulmasi saglandi.
             // ileride kaldirilacak
@@ -79,6 +88,13 @@ public class GameController : MonoBehaviour
 
 
     }
+
+    public float getCurrentDistance()// Bitis cizgisine olan anlik uzaklik donduren fonksiyon.
+    {
+
+        return finishLine.transform.position.z - characterControl.transform.position.z;
+    }
+
 
     // kaybedildiginde calisan fonksiyon. gelistirilecek
     public void lose()
@@ -95,6 +111,7 @@ public class GameController : MonoBehaviour
 
     }
 
+
     // oyun bitiminde devreye giren fonksiyon
     // oyun sonu gorevini aktif ediyor, kameranin oyun son gorevini aktif ediyor. ana karakterin oyun sonu gorevini aktif ediyor. 
     // dusmanlari aktif ediyor.
@@ -104,6 +121,8 @@ public class GameController : MonoBehaviour
         cameraControl.ending();
         characterControl.ending();
         activateEnemies();
+        Vector3 temp = characterControl.transform.GetChild(3).transform.position;
+        characterControl.transform.GetChild(3).transform.position = new Vector3(temp.x, temp.y, temp.z + 3);
     }
 
     // klonlari durduran fonksiyon.
@@ -114,8 +133,18 @@ public class GameController : MonoBehaviour
             if (clone.activeInHierarchy)
             {
 
-                clone.GetComponent<CloneControl>().stopRuning();
 
+
+
+                if (clone.GetComponent<CloneControl>() != null)
+                {
+                    clone.GetComponent<CloneControl>().stopRuning();
+
+                }
+                else if (clone.GetComponent<FreeCloneControl>() != null)
+                {
+                    clone.GetComponent<FreeCloneControl>().stopRuning();
+                }
 
 
             }
@@ -140,9 +169,10 @@ public class GameController : MonoBehaviour
     // serbest klon tarafindan cagirildigi zaman kendisini klon havuzuna ekliyip karakter sayisini arttiran fonksiyon.
     public void addFreeClone(GameObject freeClone)
     {
-        
+
         clonePool.Add(freeClone);
         currentCharacterNum++;
+        bornEffect(freeClone.transform);
     }
 
     // dusmanlari aktif hale getiren kosmayi baslatan fonksiyon
@@ -156,7 +186,7 @@ public class GameController : MonoBehaviour
                 enemy.GetComponent<EnemyController>().startRuning();
 
 
-                
+
             }
         }
     }
@@ -349,17 +379,18 @@ public class GameController : MonoBehaviour
 
         if (reason == "Hammer")
         {
-           
+
             hammerEffect(clone.transform);
-        }else if (reason== "Enemy")
+        }
+        else if (reason == "Enemy")
         {
             dieEffect(clone.transform);
-            
+
             enemyNum--;
-        }     
+        }
         else
         {
-            
+
             dieEffect(clone.transform);
         }
 
@@ -373,7 +404,7 @@ public class GameController : MonoBehaviour
 
         clone.SetActive(false);
         dieEffect(clone.transform);
-       
+
 
 
 

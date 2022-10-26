@@ -87,9 +87,14 @@ public class FreeCloneControl : MonoBehaviour
 
         }
         // serbest klonlari toplamak icin kullanilan if
+
         if (other.tag == "FreeClone")
         {
-            other.gameObject.GetComponent<FreeCloneControl>().takeClone();
+            if (gameObject.tag != "FreeClone")
+            {
+                other.gameObject.GetComponent<FreeCloneControl>().takeClone();
+
+            }
         }
     }
     private void OnTriggerStay(Collider other)

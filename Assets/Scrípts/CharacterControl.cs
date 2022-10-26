@@ -7,13 +7,16 @@ public class CharacterControl : MonoBehaviour
 
     public GameController gameController;
     public bool isEnding;
-    public Transform endigPoint;
+    public Transform endingPoint;
     public bool isRuning;
     public Animator animator;
+    public float maxDistance;
 
-    
+
+
     void Start()
     {
+        //Baslangic ve bitis arasindaki mesafe saklandi.
 
         // baslangicta ileri kosma ve sag sola kontrol devreye giriyor.
         // bitis gorevi deaktif tutuluyor.
@@ -22,7 +25,9 @@ public class CharacterControl : MonoBehaviour
         isEnding = false;
     }
 
-    
+
+
+
     // oyun sonuna gelindiginde degistirilen paramatereler.
     // Ileri kosma ve sag sola kontrol duruyor.
     // Belirli bir niktaya ilerleme basliyor.
@@ -53,6 +58,8 @@ public class CharacterControl : MonoBehaviour
         {
             // karaktere ileri dogru bir hiz verir
             transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+            
+            
 
 
             // Mouse tiklanip suruklendiginde o yonde kaydirilir.
@@ -75,9 +82,9 @@ public class CharacterControl : MonoBehaviour
         if (isEnding)
         {
             //oyun sonunda karakteri belirli noktaya yavasca ilerletir
-            transform.position = Vector3.Lerp(transform.position, endigPoint.position, 0.05f);
+            transform.position = Vector3.Lerp(transform.position, endingPoint.position, 0.05f);
             //belirli noktaya geldigini algilayan if
-            if ((transform.position - endigPoint.position).sqrMagnitude < 0.1f)
+            if ((transform.position - endingPoint.position).sqrMagnitude < 0.1f)
             {
                 stopRuning();
             }

@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour
     public void stopRuning() {
         isRuning = false;
         animator.SetBool("run", false);
+        _navMashAgent.isStopped = true;
 
     }
 
@@ -47,6 +48,7 @@ public class EnemyController : MonoBehaviour
         {
             _navMashAgent.SetDestination(target.transform.position);
         }
+        
 
     }
     private void OnTriggerEnter(Collider other)
