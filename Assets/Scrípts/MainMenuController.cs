@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Util;
 public class MainMenuController : MonoBehaviour
 {
+    Pref pf = new Pref(); // kutuphanedeki player prefs kontrolcu sinifina erisildi.
 
-    public GameObject exitPanel;
+    public GameObject exitPanel;// cikis yapilsin mi sorusunu tutan panel.
 
     void Start()
     {
@@ -20,33 +21,23 @@ public class MainMenuController : MonoBehaviour
         
     }
     public void playLevel() {
-        if (PlayerPrefs.HasKey("LastLevel"))
-        {
-            SceneManager.LoadScene(PlayerPrefs.GetInt("LastLevel"+4));
-
-
-
-        }
-        else
-        {
-            PlayerPrefs.SetInt("LastLevel",1);
-            SceneManager.LoadScene(PlayerPrefs.GetInt("LastLevel")+4);
-        }
-    
+        
+            loadScene(pf.getI("LastLevel")+4);// build ayarlarinda levellar 5. siradan basliyor.---- level 1 = index 5
+        
     }
     public void exit()
     {
-        exitPanel.SetActive(true);
+        exitPanel.SetActive(true);// cikis sorusunu soran paneli aktif hale getiren buton fonksiyonu.
     }
-    public void exitAnswer(bool answer)
+    public void exitAnswer(bool answer) // evet veya hayir buttonlarinin cevap gonderdigi fonksiyon
     {
         if (answer)
         {
-            Application.Quit();
+            Application.Quit(); //cevap evet ise oyundan cikiyor
         }
         else
         {
-            exitPanel.SetActive(false);
+            exitPanel.SetActive(false);// cevap hayir ise paneli kapatip ana menuye geri donuyor.
         }
     }
 }
