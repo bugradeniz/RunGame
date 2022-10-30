@@ -16,7 +16,8 @@ namespace Util
             {"defaultLastLevel", 1},
             {"defaultCurrentHat", 0},
             {"defaultCurrentStick", 0},
-            {"defaultCurrentSkin", 0}
+            {"defaultCurrentSkin", 0},
+            {"defaultPoint", 200}
         };
         Dictionary<string, float> defaultDatasF = new Dictionary<string, float>(){
             {"example1", 0f},
@@ -93,7 +94,28 @@ namespace Util
     }
 
     [Serializable]
-    public class Item // esya bilgilerini tutan obje
+    public class HatItem // esya bilgilerini tutan obje
+    {
+        public int groupId;
+        public int itemId;
+        public string name;
+        public int price;
+        public bool sold;
+
+        
+
+    }
+    [Serializable]
+    public class StickItem
+    {
+        public int groupId;
+        public int itemId;
+        public string name;
+        public int price;
+        public bool sold;
+    }
+    [Serializable]
+    public class SkinItem
     {
         public int groupId;
         public int itemId;
@@ -102,23 +124,33 @@ namespace Util
         public bool sold;
 
     }
+    [Serializable]
+    public class Items
+    {
+        public List<HatItem>  hatItems;
+        public List<StickItem>  stickItems;
+        public List<SkinItem>  skinItems;
+
+        
+
+    }
     public class Data
     {
         // gelistirilecek
 
-        public List<Item> items;// esya objelerinden olusan liste
+        public Items items;// esya objelerinden olusan liste
 
 
         // belirli dosyayi okuyup icindeki listeyi yukaridaki listeye atayan fonksiyon
         public void read()
         {
-            if (File.Exists(Application.persistentDataPath + "/DataStore.gd"))
+            if (File.Exists(Application.persistentDataPath + "/ItemsData.gd"))
             {
                 try
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    FileStream file = File.OpenRead(Application.persistentDataPath + "/DataStore.gd");
-                    items = (List<Item>)bf.Deserialize(file);
+                    FileStream file = File.OpenRead(Application.persistentDataPath + "/ItemsData.gd");
+                    items = (Items)bf.Deserialize(file);
                     file.Close();
                 }
                 catch (System.IO.IOException)
@@ -134,13 +166,13 @@ namespace Util
         // yukaridaki listeyi belirli dosyaya yazarak kaydeden fonksiyon
         public void write()
         {
-            if (File.Exists(Application.persistentDataPath + "/DataStore.gd"))
+            if (File.Exists(Application.persistentDataPath + "/ItemsData.gd"))
             {
 
                 try
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    FileStream file = File.OpenWrite(Application.persistentDataPath + "/DataStore.gd");
+                    FileStream file = File.OpenWrite(Application.persistentDataPath + "/ItemsData.gd");
                     bf.Serialize(file, items);
                     file.Close();
                 }
@@ -160,7 +192,7 @@ namespace Util
             try
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + "/DataStore.gd");
+                FileStream file = File.Create(Application.persistentDataPath + "/ItemsData.gd");
                 bf.Serialize(file, items);
                 file.Close();
             }

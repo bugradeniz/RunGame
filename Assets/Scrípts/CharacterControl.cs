@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Util;
 public class CharacterControl : MonoBehaviour
 {
-
+    private Pref pf = new Pref();
     public GameController gameController;
     public bool isEnding;
     public Transform endingPoint;
     public bool isRuning;
     public Animator animator;
     public float maxDistance;
+    public GameObject[] hats;
 
-
+    public GameObject[] sticks;
+    public Material[] skins;
 
     void Start()
     {
+
         //Baslangic ve bitis arasindaki mesafe saklandi.
 
         // baslangicta ileri kosma ve sag sola kontrol devreye giriyor.
@@ -23,9 +26,63 @@ public class CharacterControl : MonoBehaviour
 
         isRuning = true;
         isEnding = false;
+
+
+        showItems();
+
     }
 
+    void showItems()
+    {
 
+
+
+        for (int i = 0; i < hats.Length; i++)
+        {
+            hats[i].SetActive(false); // listedeki herbir obje sirasi geldiginde pasif hale getiriliyor.
+
+            if (i == pf.getI("CurrentHat"))                         // eger index sahip olunan esya indexinde ise iceri giriyor
+            {
+                hats[i].SetActive(true);                            // once esya aktif hale getiriliyor.
+
+
+            }
+
+        }
+
+        for (int i = 0; i < sticks.Length; i++)// sopalar icin de ayni sey gecerlli
+        {
+            sticks[i].SetActive(false);
+
+            if (i == pf.getI("CurrentStick"))
+            {
+                sticks[i].SetActive(true);
+
+
+
+            }
+
+        }
+
+
+        for (int i = 0; i < skins.Length; i++) // kiyafetteki tek fark pasif hale getirme yok
+        {
+
+
+            if (i == pf.getI("CurrentSkin"))
+            {
+
+                gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = skins[i];// ve tuttugumuz renderer objesine indexteki material ataniyor.
+
+
+                break;
+            }
+
+
+        }
+
+
+    }
 
 
     // oyun sonuna gelindiginde degistirilen paramatereler.
@@ -58,8 +115,8 @@ public class CharacterControl : MonoBehaviour
         {
             // karaktere ileri dogru bir hiz verir
             transform.Translate(Vector3.forward * 1f * Time.deltaTime);
-            
-            
+
+
 
 
             // Mouse tiklanip suruklendiginde o yonde kaydirilir.
@@ -114,8 +171,8 @@ public class CharacterControl : MonoBehaviour
             gameController.ending();
         }
 
-       
-        
+
+
 
 
 
@@ -126,7 +183,7 @@ public class CharacterControl : MonoBehaviour
 
         // oyun icinde karakterimizin takili kamasini engellemeye calisan kod
         // bu kodu hic begenmedim sonra degistiricem
-        if (col.gameObject.CompareTag("Column")|| col.gameObject.CompareTag("Spike"))
+        if (col.gameObject.CompareTag("Column") || col.gameObject.CompareTag("Spike"))
         {
             if (transform.position.x >= 0)
             {
