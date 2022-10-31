@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
         maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
         // oyun sonundaki dusmanlar otomatik olusturuluyor.
         createEnemies();

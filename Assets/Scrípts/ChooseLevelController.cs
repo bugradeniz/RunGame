@@ -11,6 +11,8 @@ public class ChooseLevelController : MonoBehaviour
     public GameObject[] levelButtons;// level buttonlarinin listesi tutuluyor. level miktarina gore artirilabilir.
     public int lastLevel;//en son kalinan leveli tutan degisken
     public Sprite lockedLevelSprite;//son kalinan levelden sonraki levellerin erisimi engellendiginde kilitli gosteren sprite.
+
+    public AudioSource buttonSound;
     void Start()
     {
         lastLevel=pf.getI("LastLevel"); // kutuphane ile playerprefden son kalinan level bilgisi alindi
@@ -46,11 +48,13 @@ public class ChooseLevelController : MonoBehaviour
     // Aktif butonlara kendi indexi ile cagirilan fonksiyon.
     public void selectedLevelLoader(int index)
     {
+        buttonSound.Play();
         SceneManager.LoadScene(index+4);// leveller build settings de 5 den basladgi icin gerekli index +4 ile donduruldu
     }
 
     public void back()
     {
+        buttonSound.Play();
         SceneManager.LoadScene(0); // geri tusunun calistirdigi fonksiyon.ana menuye donuyor.
     }
 }
