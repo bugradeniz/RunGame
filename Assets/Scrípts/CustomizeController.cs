@@ -58,13 +58,16 @@ public class CustomizeController : MonoBehaviour
         dt.read();
         items = dt.items;
 
+        for (int i = 0; i < buttonSound.Length; i++)
+        {
+
+            buttonSound[i].volume = pf.getF("FXSound");
+        }
 
 
-        
 
-       
 
-        pf.setI("Point",300); // testler icin basta 300 papel veriyor.
+        pf.setI("Point", 300); // testler icin basta 300 papel veriyor.
 
 
 
@@ -74,6 +77,7 @@ public class CustomizeController : MonoBehaviour
         updateButtons();// ilk sahne acildiginda butonlarin kullanilabilirlik durumunu indexlere gore ayarliyor
 
     }
+
     void Update()
     {
         // save butonuna (boolean tick) basildiginda items listesini kutuphane yardimi ile kayit ediyor.
@@ -93,7 +97,7 @@ public class CustomizeController : MonoBehaviour
     }
 
     //------------------------- BUTONLAR
-    
+
     public void backButton()
     {
         buttonSound[0].Play();
@@ -103,7 +107,7 @@ public class CustomizeController : MonoBehaviour
     {
         buttonSound[1].Play();
         showItemsAndTexts(); // mevcut esyalar giydiriliyor
-        
+
         updateButtons();//  butonlarin kullanilabilirlik durumunu indexlere gore ayarliyor
     }
     public void buyButton(int key)
@@ -174,12 +178,12 @@ public class CustomizeController : MonoBehaviour
 
                 break;
             case 1:     //button sopa butonu ile burada calisiyor.Obje burada sopa.$$$$$$$$$$$$  USTTEKI ILE AYNI
-                pf.setI("CurrentStick", stickIndex);                                    
+                pf.setI("CurrentStick", stickIndex);
 
                 updateButtons();
                 break;
             case 2:     //button kiyafet butonu ile burada calisiyor.$$$$$$$$$$$$$$$$$$$$$$$$$$$  USTTEKI ILE AYNI
-                pf.setI("CurrentSkin", skinIndex);                                    
+                pf.setI("CurrentSkin", skinIndex);
 
                 updateButtons();
 

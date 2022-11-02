@@ -12,7 +12,7 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
-
+        buttonSound.volume = pf.getF("FXSound");
     }
 
 

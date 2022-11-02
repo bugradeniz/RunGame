@@ -15,7 +15,8 @@ public class ChooseLevelController : MonoBehaviour
     public AudioSource buttonSound;
     void Start()
     {
-        lastLevel=pf.getI("LastLevel"); // kutuphane ile playerprefden son kalinan level bilgisi alindi
+        buttonSound.volume = pf.getF("FXSound");
+        lastLevel =pf.getI("LastLevel"); // kutuphane ile playerprefden son kalinan level bilgisi alindi
         setLevelButtons();// butonlarin otomatik olarak duruma gore kurulumunu yapan fonksiyon.
     }
 

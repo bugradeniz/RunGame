@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using Util;
 public class GameController : MonoBehaviour
 {
 
+    Pref pf = new Pref();
     [Header("Controllers")]
     public CameraControl cameraControl;
     public CharacterControl characterControl;
@@ -19,8 +21,13 @@ public class GameController : MonoBehaviour
 
     [Header("UI")]
     public Slider progressBar;
+    public GameObject settingsPanel;
+    public GameObject exitPanel;
 
-
+    [Header("Sound")]
+    public AudioSource gameSound;
+    public AudioSource buttonSound;
+    public AudioSource[] fxSounds;
     [Header("Pools")]
     public List<GameObject> clonePool;
     public List<GameObject> enemyPool;
@@ -35,6 +42,12 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+
+        for (int i = 0; i < fxSounds.Length; i++)
+        {
+            fxSounds[i].volume = pf.getF("FXSound");
+        }
+        gameSound.volume = pf.getF("GameSound");
         Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
         maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
         // oyun sonundaki dusmanlar otomatik olusturuluyor.
@@ -467,5 +480,40 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    //$$$$$$$$$$$$$$$$$$$$ BARLAR
+    public void gameSoundBar() { }
+    public void fxSoundBar() { }
+
+    ////$$$$$$$$$$$$$$$  BUTONLAR
+    public void settingsButton()
+    {
+        Time.timeScale = 0;
+        settingsPanel.SetActive(true);
+    }
+    public void replayButton() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+
+    }
+    public void playButton() {
+        Time.timeScale = 1;
+        settingsPanel.SetActive(false);
+    }
+    public void homeButton() {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+
+
+    }
+    public void exitButton() {
+        exitPanel.SetActive(true);
+    }
+    public void yesButton() {
+        Application.Quit();
+    }
+    public void noButton() {
+        exitPanel.SetActive(false);
     }
 }

@@ -20,9 +20,9 @@ namespace Util
             {"defaultPoint", 200}
         };
         Dictionary<string, float> defaultDatasF = new Dictionary<string, float>(){
-            {"example1", 0f},
-            {"example2", 0f},
-            {"example3", 0f}
+            {"defaultMenuSound", 0.5f},
+            {"defaultFXSound", 0.5f},
+            {"defaultGameSound", 0.5f},
         };
         Dictionary<string, string> defaultDatasS = new Dictionary<string, string>(){
             {"example4", ""},

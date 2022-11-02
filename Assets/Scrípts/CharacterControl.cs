@@ -13,6 +13,7 @@ public class CharacterControl : MonoBehaviour
     public float maxDistance;
     public GameObject[] hats;
 
+
     public GameObject[] sticks;
     public Material[] skins;
 
@@ -32,6 +33,8 @@ public class CharacterControl : MonoBehaviour
 
     }
 
+
+    //giyili esyalari aktif eden fonksiyon
     void showItems()
     {
 
