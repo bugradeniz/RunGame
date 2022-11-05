@@ -25,9 +25,9 @@ namespace Util
             {"defaultGameSound", 0.5f},
         };
         Dictionary<string, string> defaultDatasS = new Dictionary<string, string>(){
-            {"example4", ""},
-            {"example5", ""},
-            {"example6", ""}
+            {"defaultLanguage", "EN"},
+            {"defaultSomething", "Something"},
+
         };
 
 

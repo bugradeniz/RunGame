@@ -664,6 +664,7 @@ GameObject:
   - component: {fileID: 640971997}
   - component: {fileID: 640971999}
   - component: {fileID: 640971998}
+  - component: {fileID: 640972000}
   m_Layer: 5
   m_Name: LanguageText
   m_TagString: Untagged
@@ -787,6 +788,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640971996}
   m_CullTransparentMesh: 1
+--- !u!114 &640972000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640971996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: lang
 --- !u!1 &729083781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1066,7 @@ GameObject:
   - component: {fileID: 819011974}
   - component: {fileID: 819011976}
   - component: {fileID: 819011975}
+  - component: {fileID: 819011977}
   m_Layer: 5
   m_Name: MenuSoundText
   m_TagString: Untagged
@@ -1175,6 +1190,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819011973}
   m_CullTransparentMesh: 1
+--- !u!114 &819011977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819011973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: menusound
 --- !u!1 &925438101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1214,7 @@ GameObject:
   - component: {fileID: 925438102}
   - component: {fileID: 925438104}
   - component: {fileID: 925438103}
+  - component: {fileID: 925438105}
   m_Layer: 5
   m_Name: FXSoundText
   m_TagString: Untagged
@@ -1309,6 +1338,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925438101}
   m_CullTransparentMesh: 1
+--- !u!114 &925438105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925438101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: fxsound
 --- !u!1 &982491218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1436,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1692082238}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: leftButton
+        m_MethodName: LeftButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2004,6 +2046,7 @@ GameObject:
   - component: {fileID: 1274601243}
   - component: {fileID: 1274601245}
   - component: {fileID: 1274601244}
+  - component: {fileID: 1274601246}
   m_Layer: 5
   m_Name: GameSoundText
   m_TagString: Untagged
@@ -2127,6 +2170,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274601242}
   m_CullTransparentMesh: 1
+--- !u!114 &1274601246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274601242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: gamesound
 --- !u!1 &1287795664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2687,7 @@ GameObject:
   - component: {fileID: 1511285006}
   - component: {fileID: 1511285008}
   - component: {fileID: 1511285007}
+  - component: {fileID: 1511285009}
   m_Layer: 5
   m_Name: SettingsText
   m_TagString: Untagged
@@ -2754,6 +2811,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511285005}
   m_CullTransparentMesh: 1
+--- !u!114 &1511285009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511285005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: settings
 --- !u!1 &1623152268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +2972,15 @@ MonoBehaviour:
   - {fileID: 519011649}
   - {fileID: 729083783}
   buttonSound: {fileID: 1692082240}
+  settingsTexts:
+  - {fileID: 1511285009}
+  - {fileID: 819011977}
+  - {fileID: 925438105}
+  - {fileID: 1274601246}
+  - {fileID: 2006660887}
+  - {fileID: 640972000}
+  leftButton: {fileID: 0}
+  rightButton: {fileID: 0}
 --- !u!4 &1692082239
 Transform:
   m_ObjectHideFlags: 0
@@ -3413,8 +3492,9 @@ GameObject:
   - component: {fileID: 2006660884}
   - component: {fileID: 2006660886}
   - component: {fileID: 2006660885}
+  - component: {fileID: 2006660887}
   m_Layer: 5
-  m_Name: GameSoundText
+  m_Name: LanguageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3536,6 +3616,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006660883}
   m_CullTransparentMesh: 1
+--- !u!114 &2006660887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006660883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066e1f472950f4090584e50027e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextId: language
 --- !u!1 &2015875634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,7 +3873,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1692082238}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: rightButton
+        m_MethodName: RightButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

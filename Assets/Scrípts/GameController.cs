@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     public GameObject finishLine;
 
     [Header("UI")]
+    public Slider gameSoundBar;
+    public Slider fxSoundBar;
     public Slider progressBar;
     public GameObject settingsPanel;
     public GameObject exitPanel;
@@ -47,7 +49,12 @@ public class GameController : MonoBehaviour
         {
             fxSounds[i].volume = pf.getF("FXSound");
         }
+        gameSoundBar.value = pf.getF("GameSound");
+        fxSoundBar.value = pf.getF("FXSound");
+
         gameSound.volume = pf.getF("GameSound");
+
+
         Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
         maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
         // oyun sonundaki dusmanlar otomatik olusturuluyor.
@@ -483,8 +490,18 @@ public class GameController : MonoBehaviour
     }
 
     //$$$$$$$$$$$$$$$$$$$$ BARLAR
-    public void gameSoundBar() { }
-    public void fxSoundBar() { }
+    public void gameBar() {
+        pf.setF("GameSound",gameSoundBar.value);
+        gameSound.volume = gameSoundBar.value;
+    }
+    public void fxBar()
+    {
+        pf.setF("FXSound", fxSoundBar.value);
+        for (int i = 0; i < fxSounds.Length; i++)
+        {
+            fxSounds[i].volume = pf.getF("FXSound");
+        }
+    }
 
     ////$$$$$$$$$$$$$$$  BUTONLAR
     public void settingsButton()

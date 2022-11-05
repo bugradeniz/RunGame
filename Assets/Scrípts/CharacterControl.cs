@@ -10,12 +10,14 @@ public class CharacterControl : MonoBehaviour
     public Transform endingPoint;
     public bool isRuning;
     public Animator animator;
+    public Rigidbody rb;
     public float maxDistance;
     public GameObject[] hats;
-
+    public Vector3 rotation;
 
     public GameObject[] sticks;
     public Material[] skins;
+    public bool canMove;
 
     void Start()
     {
@@ -25,11 +27,11 @@ public class CharacterControl : MonoBehaviour
         // baslangicta ileri kosma ve sag sola kontrol devreye giriyor.
         // bitis gorevi deaktif tutuluyor.
 
-        isRuning = true;
-        isEnding = false;
-
+        
 
         showItems();
+
+        startRuning();
 
     }
 
@@ -100,7 +102,9 @@ public class CharacterControl : MonoBehaviour
     //Animasyonu ve ilerlemeyi baslatan fonksiyon
     public void startRuning()
     {
+        canMove = true;
         isRuning = true;
+        isEnding = false;
         animator.SetBool("run", true);
     }
 
@@ -109,42 +113,74 @@ public class CharacterControl : MonoBehaviour
     {
         isRuning = false;
         animator.SetBool("run", false);
+        isEnding = false;
 
     }
-
     private void Update()
+    {
+        rotation = (Vector3.forward);
+        if (Input.GetKey(KeyCode.Mouse0)&& canMove)
+        {
+            if (Input.GetAxis("Mouse X") < 0)
+            {
+
+                rotation = (Vector3.forward + Vector3.left);
+            }
+            if (Input.GetAxis("Mouse X") > 0)
+            {
+                rotation = (Vector3.forward + Vector3.right);
+
+            }
+        }
+
+       
+    }
+    private void FixedUpdate()
     {
         if (isRuning)
         {
-            // karaktere ileri dogru bir hiz verir
-            transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+
+
+            rb.MovePosition(Vector3.Lerp(transform.position, transform.position + (rotation) * 10f, Time.deltaTime * 0.1f));
+            rb.velocity = Vector3.zero;
 
 
 
 
-            // Mouse tiklanip suruklendiginde o yonde kaydirilir.
-            // Ilerde ekrana dokunma ve surukleme olarak degistirilecek
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                if (Input.GetAxis("Mouse X") < 0)
-                {
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - 2f, transform.position.y, transform.position.z), .01f);
-                }
-                if (Input.GetAxis("Mouse X") > 0)
-                {
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z), .01f);
-                }
 
-            }
 
+
+            /*
+
+                        transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+
+                        // Mouse tiklanip suruklendiginde o yonde kaydirilir.
+                        // Ilerde ekrana dokunma ve surukleme olarak degistirilecek
+                        if (Input.GetKey(KeyCode.Mouse0))
+                        {
+                            if (Input.GetAxis("Mouse X") < 0)
+                            {
+
+                                transform.Translate((Vector3.left) * 1f * Time.deltaTime);
+                            }
+                            if (Input.GetAxis("Mouse X") > 0)
+                            {
+                                transform.Translate((Vector3.right) * 1f * Time.deltaTime);
+                            }
+
+                        }
+
+                        // karaktere ileri dogru bir hiz verir
+
+                     */
 
         }
         if (isEnding)
         {
             //oyun sonunda karakteri belirli noktaya yavasca ilerletir
-            transform.position = Vector3.Lerp(transform.position, endingPoint.position, 0.05f);
+            rb.MovePosition(Vector3.Lerp(transform.position, endingPoint.position, 0.05f));
             //belirli noktaya geldigini algilayan if
-            if ((transform.position - endingPoint.position).sqrMagnitude < 0.1f)
+            if ((transform.position - endingPoint.position).sqrMagnitude < 0.01f)
             {
                 stopRuning();
             }
@@ -186,17 +222,18 @@ public class CharacterControl : MonoBehaviour
 
         // oyun icinde karakterimizin takili kamasini engellemeye calisan kod
         // bu kodu hic begenmedim sonra degistiricem
-        if (col.gameObject.CompareTag("Column") || col.gameObject.CompareTag("Spike"))
+        if (col.gameObject.CompareTag("Column") )
         {
-            if (transform.position.x >= 0)
-            {
-                transform.Translate(Vector3.left * 10f * Time.deltaTime);
-            }
-            else
-            {
+            canMove = false;
 
-                transform.Translate(Vector3.right * 10f * Time.deltaTime);
-            }
+        }
+    }
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.CompareTag("Column"))
+        {
+            canMove = true;
+
         }
     }
 

@@ -112,13 +112,14 @@ public class CustomizeController : MonoBehaviour
     }
     public void buyButton(int key)
     {
-        buttonSound[2].Play();
+        
         switch (key)// her bir buy button bir anahtar degiskeni gonderiyor. bu degisken buton listese indexleri ile ayni. [0]=sapka,[1]=sopa,[2]=kiyafet
         {
             case 0: //button sapka butonu ile burada calisiyor.Obje burada sapka
 
                 if (pf.getI("Point") >= items.hatItems[hatIndex].price)                   //Puanimiz sapkanin fiyatina yetiyorsa satin alma gerceklesiyor 
                 {
+                    buttonSound[2].Play();
                     items.hatItems[hatIndex].sold = true;                               //kutuphane ile cektigimiz sapkalardan secili sapkanin satin alindi bilgisi true olarak degistiriliyor.
                     int newPoint = pf.getI("Point") - items.hatItems[hatIndex].price;     //
                     pf.setI("Point", newPoint);                                          // yeni puan guncelleniyor.
@@ -132,6 +133,7 @@ public class CustomizeController : MonoBehaviour
             case 1://button sopa butonu ile burada calisiyor.Obje burada sopa.$$$$$$$$$$$$  USTTEKI ILE AYNI
                 if (pf.getI("Point") >= items.stickItems[stickIndex].price)
                 {
+                    buttonSound[2].Play();
                     items.stickItems[stickIndex].sold = true;
                     int newPoint = pf.getI("Point") - items.stickItems[stickIndex].price;
                     pf.setI("Point", newPoint);
@@ -146,6 +148,7 @@ public class CustomizeController : MonoBehaviour
             case 2://button kiyafet butonu ile burada calisiyor.$$$$$$$$$$$$$$$$$$$$$$$$$$$  USTTEKI ILE AYNI
                 if (pf.getI("Point") >= items.skinItems[skinIndex].price)
                 {
+                    buttonSound[2].Play();
                     items.skinItems[skinIndex].sold = true;
                     int newPoint = pf.getI("Point") - items.skinItems[skinIndex].price;
                     pf.setI("Point", newPoint);

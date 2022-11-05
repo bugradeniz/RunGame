@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Util;
 public class MainMenuController : MonoBehaviour
@@ -9,10 +10,12 @@ public class MainMenuController : MonoBehaviour
 
     public GameObject exitPanel;// cikis yapilsin mi sorusunu tutan panel.
     public AudioSource buttonSound;
+    
 
     void Start()
     {
         buttonSound.volume = pf.getF("FXSound");
+        
     }
 
 

@@ -20,7 +20,7 @@ public class CameraControl : MonoBehaviour
 
 
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
 
         if (isEnding)

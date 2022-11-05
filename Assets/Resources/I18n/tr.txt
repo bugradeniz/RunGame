@@ -1,0 +1,15 @@
+﻿play=OYNA
+customize=ÖZELLEŞTİR
+chooselevel=BÖLÜM SEÇ
+market=MARKET
+settings=AYARLAR
+areyousure?=EMİN MİSİN ?
+exit=ÇIKIŞ
+yes=EVET
+no=HAYIR
+unequipt=ÇIKAR
+equipt=GİY
+menusound=MENÜ SESİ
+fxsound=FX SESİ
+gamesound=OYUN SESİ
+language=DİL

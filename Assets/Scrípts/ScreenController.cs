@@ -12,19 +12,19 @@ public class ScreenController : MonoBehaviour
         {
 
             case "Addition":
-                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "+" + gameObject.transform.parent.gameObject.transform.parent.gameObject.name;
+                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "+" + transform.parent.transform.parent.name;
                 break;
 
             case "Multiplication":
-                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "x" + gameObject.transform.parent.gameObject.transform.parent.gameObject.name;
+                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "x" + transform.parent.transform.parent.name;
                 break;
 
             case "Subtraction":
-                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "-" + gameObject.transform.parent.gameObject.transform.parent.gameObject.name;
+                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "-" + transform.parent.transform.parent.name;
                 break;
 
             case "Division":
-                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "/" + gameObject.transform.parent.gameObject.transform.parent.gameObject.name;
+                gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "/" + transform.parent.transform.parent.name;
                 break;
             default:
                 break;

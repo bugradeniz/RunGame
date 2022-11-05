@@ -1,0 +1,15 @@
+play=PLAY
+customize=CUSTOMIZE
+chooselevel=CHOOSE LEVEL
+market=MARKET
+settings=SETTINGS
+areyousure?=ARE YOU SURE ?
+exit=EXIT
+yes=YES
+no=NO
+unequipt=UNEQUIPT
+equipt=EQUIPT
+menusound=MENU SOUND
+fxsound=FX SOUND
+gamesound=GAME SOUND
+language=LANGUAGE
