@@ -36,13 +36,16 @@ class I18n
     public static Dictionary<String, String> Fields { get; private set; }
 
     private static string lang;
+    private static int langindex;
+    private static string[] langs = {"EN","TR"};
     /// <summary>
     /// Init on first use
     /// </summary>
     static I18n()
     {
         Pref pf = new Pref();
-        lang = pf.getS("Language").ToLower();
+        lang = pf.getS("Language");
+        langindex = pf.getI("LanguageIndex");
         LoadLanguage();
     }
 
@@ -89,6 +92,7 @@ class I18n
         LoadLanguage();
         Pref pf = new Pref();
         pf.setS("Language", language);
+        pf.setI("LanguageIndex",Array.IndexOf(langs,language));
 
 
     }
@@ -162,7 +166,7 @@ class I18n
             case SystemLanguage.Unknown: res = "EN"; break;
             case SystemLanguage.Vietnamese: res = "VI"; break;
         }
-        Debug.Log("Lang: " + res);
+       
         return res;
     }
 

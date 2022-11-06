@@ -13,3 +13,6 @@ menusound=MENU SOUND
 fxsound=FX SOUND
 gamesound=GAME SOUND
 language=LANGUAGE
+youlose=YOU LOSE
+youwin=YOU WIN
+loading=LOADING

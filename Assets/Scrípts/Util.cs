@@ -17,6 +17,7 @@ namespace Util
             {"defaultCurrentHat", 0},
             {"defaultCurrentStick", 0},
             {"defaultCurrentSkin", 0},
+            {"defaultLanguageIndex", 0},
             {"defaultPoint", 200}
         };
         Dictionary<string, float> defaultDatasF = new Dictionary<string, float>(){
@@ -98,11 +99,21 @@ namespace Util
     {
         public int groupId;
         public int itemId;
-        public string name;
+        public List<string> names;
+        public string name
+        {
+            get
+            {
+                Pref pf = new Pref();
+
+                return names[pf.getI("LanguageIndex")];
+            }
+            private set { }
+        }
         public int price;
         public bool sold;
 
-        
+
 
     }
     [Serializable]
@@ -110,7 +121,17 @@ namespace Util
     {
         public int groupId;
         public int itemId;
-        public string name;
+        public List<string> names;
+        public string name
+        {
+            get
+            {
+                Pref pf = new Pref();
+
+                return names[pf.getI("LanguageIndex")];
+            }
+            private set { }
+        }
         public int price;
         public bool sold;
     }
@@ -119,7 +140,17 @@ namespace Util
     {
         public int groupId;
         public int itemId;
-        public string name;
+        public List<string> names;    // esyalar iclerinde her dil icin farkli bir isim tutuyor. tuttugu isimlerin indexi dil indexi ile ayni olmali !!!
+        public string name
+        {
+            get
+            {
+                Pref pf = new Pref();
+
+                return names[pf.getI("LanguageIndex")];  // name cekildigi zaman listeden dil indexindeki isim cekiliyor!
+            }
+            private set { }
+        }
         public int price;
         public bool sold;
 
@@ -127,11 +158,11 @@ namespace Util
     [Serializable]
     public class Items
     {
-        public List<HatItem>  hatItems;
-        public List<StickItem>  stickItems;
-        public List<SkinItem>  skinItems;
+        public List<HatItem> hatItems;
+        public List<StickItem> stickItems;
+        public List<SkinItem> skinItems;
 
-        
+
 
     }
     public class Data

@@ -20,9 +20,7 @@ public class SettingsController : MonoBehaviour
     public static event UpdateSound updateMainMenuSound;
     void Start()
     {
-        languageIndex = languages.IndexOf(pf.getS("Language"));
-        print(languages.IndexOf(pf.getS("Language")));
-        print(languages.Count);
+        languageIndex = pf.getI("LanguageIndex");
 
         buttonSound.volume = pf.getF("FXSound");
         sliders[0].value = pf.getF("MenuSound");

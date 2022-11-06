@@ -10,24 +10,38 @@ public class MainMenuController : MonoBehaviour
 
     public GameObject exitPanel;// cikis yapilsin mi sorusunu tutan panel.
     public AudioSource buttonSound;
-    
+
+    public GameObject loadingPanel;
+    public Slider loadingBar;
+
 
     void Start()
     {
         buttonSound.volume = pf.getF("FXSound");
-        
-    }
 
+    }
+    IEnumerator loadAsync(int index)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        loadingPanel.SetActive(true);
+        while (!operation.isDone)
+        {
+            loadingBar.value = operation.progress + 0.1f;
+            
+            yield return null;
+        }
+
+    }
 
     public void loadScene(int index)
     {
         buttonSound.Play();
-        SceneManager.LoadScene(index);
+        StartCoroutine(loadAsync(index));
 
     }
     public void playLevel()
     {
-        
+
         loadScene(pf.getI("LastLevel") + 4);// build ayarlarinda levellar 5. siradan basliyor.---- level 1 = index 5
 
     }

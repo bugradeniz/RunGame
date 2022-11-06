@@ -13,10 +13,13 @@ public class ChooseLevelController : MonoBehaviour
     public Sprite lockedLevelSprite;//son kalinan levelden sonraki levellerin erisimi engellendiginde kilitli gosteren sprite.
 
     public AudioSource buttonSound;
+    public GameObject loadingPanel;
+    public Slider loadingBar;
+
     void Start()
     {
         buttonSound.volume = pf.getF("FXSound");
-        lastLevel =pf.getI("LastLevel"); // kutuphane ile playerprefden son kalinan level bilgisi alindi
+        lastLevel = pf.getI("LastLevel"); // kutuphane ile playerprefden son kalinan level bilgisi alindi
         setLevelButtons();// butonlarin otomatik olarak duruma gore kurulumunu yapan fonksiyon.
     }
 
@@ -44,13 +47,24 @@ public class ChooseLevelController : MonoBehaviour
         }
 
     }
+    IEnumerator loadAsync(int index)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        loadingPanel.SetActive(true);
+        while (!operation.isDone)
+        {
+            loadingBar.value = operation.progress + 0.1f;
 
+            yield return null;
+        }
+
+    }
 
     // Aktif butonlara kendi indexi ile cagirilan fonksiyon.
     public void selectedLevelLoader(int index)
     {
         buttonSound.Play();
-        SceneManager.LoadScene(index+4);// leveller build settings de 5 den basladgi icin gerekli index +4 ile donduruldu
+        StartCoroutine(loadAsync(index + 4));     // leveller build settings de 5 den basladgi icin gerekli index +4 ile donduruldu
     }
 
     public void back()

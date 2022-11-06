@@ -13,3 +13,6 @@ menusound=MENÜ SESİ
 fxsound=FX SESİ
 gamesound=OYUN SESİ
 language=DİL
+youlose=KAYBETTİN
+youwin=KAZANDIN
+loading=YÜKLENİYOR

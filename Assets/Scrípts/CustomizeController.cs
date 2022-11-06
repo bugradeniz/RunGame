@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Util;
+using TMPro;
 
 public class CustomizeController : MonoBehaviour
 {
@@ -17,19 +18,19 @@ public class CustomizeController : MonoBehaviour
 
     public GameObject[] hats;// karakterin sapkalarinin tutuldugu liste.objeler editor ile karakterin icinde gerekli konuma getirildi. pasif olarak tutuluyorlar.
                              // konumu:Character/hips/Spine/Spine1/Spine2/Neck/Head//HeadTop_End/
-    public Text hatText;//gosterilen sapkanin ismini tutan degisken
+    public TMP_Text hatText;//gosterilen sapkanin ismini tutan degisken
     int hatIndex;// gosterilen sapkanin indexini tutan degisken
 
 
     public GameObject[] sticks;// karakterin sopalarinin tutuldugu liste.objeler editor ile karakterin icinde gerekli konuma getirildi. pasif olarak tutuluyorlar.
                                //// konumu:Character/hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHadIndex1/LeftHandIndex2/
-    public Text stickText;//gosterilen sopanin ismini tutan degisken
+    public TMP_Text stickText;//gosterilen sopanin ismini tutan degisken
     int stickIndex;//gosterilen sopanin indexini tutan degisken
 
 
     public SkinnedMeshRenderer characterSkin;//karakterin materialini degistirilmek icin renderini tutan deger 
     public Material[] skins;// karakter kiyafetlerini tutan liste.
-    public Text skinText;//gosterilen kiyafetin adini gosteren text.
+    public TMP_Text skinText;//gosterilen kiyafetin adini gosteren text.
     int skinIndex;//gosterilen kiyafetin indexini tutan degisken.
 
     public Button[] buyButtons;
@@ -237,7 +238,7 @@ public class CustomizeController : MonoBehaviour
                 hatIndex++;                                                 // sonra index 1 artiriliyor.
                 hatIndex = Mathf.Min(hatIndex, hats.Length - 1);            //indexin olmasi gereken degerleri asmasi engelleniyor.
                 hats[hatIndex].SetActive(true);                             // yeni indexteki obje aktif hale getiriliyor.
-                hatText.text = items.hatItems[hatIndex].name;               // ONEMLI ######## Item kayitlarindaki yeni indexteki objenin ismi text icine yazdiriliyor. Hats indexleri ile items.hatsItems listesindeki indexler suanda esit.
+                hatText.SetText(items.hatItems[hatIndex].name);               // ONEMLI ######## Item kayitlarindaki yeni indexteki objenin ismi text icine yazdiriliyor. Hats indexleri ile ( items.hatsItems ) listesindeki indexler esit olmali.
 
                 updateButtons();                                            // her buton isleminin sonunda butonlarin durumunu guncellemek icin buton guncelleme fonksiyonu cagiriliyor
 
@@ -250,7 +251,7 @@ public class CustomizeController : MonoBehaviour
                 stickIndex = Mathf.Min(stickIndex, sticks.Length - 1);
 
                 sticks[stickIndex].SetActive(true);
-                stickText.text = items.stickItems[stickIndex].name;
+                stickText.SetText(items.stickItems[stickIndex].name);
 
                 updateButtons();
 
@@ -262,7 +263,7 @@ public class CustomizeController : MonoBehaviour
                 skinIndex = Mathf.Min(skinIndex, skins.Length - 1);           //indexin olmasi gereken degerleri asmasi engelleniyor.
                 characterSkin.material = skins[skinIndex];                  //yeni indexteki material tuttugumuz karakter renderer in materialine ataniyor.
 
-                skinText.text = items.skinItems[skinIndex].name;                      //yeni indexteki materialin ismi kiyafet textine yazdiriliyor
+                skinText.SetText(items.skinItems[skinIndex].name);                      //yeni indexteki materialin ismi kiyafet textine yazdiriliyor
 
                 updateButtons();                                            // her buton isleminin sonunda butonlarin durumunu guncellemek icin buton guncelleme fonksiyonu cagiriliyor
 
@@ -291,7 +292,7 @@ public class CustomizeController : MonoBehaviour
                 hatIndex = Mathf.Max(hatIndex, 0);                          // sinirlar azaltilma oldugu icin 0
 
                 hats[hatIndex].SetActive(true);
-                hatText.text = items.hatItems[hatIndex].name;
+                hatText.SetText(items.hatItems[hatIndex].name);
 
                 updateButtons();
 
@@ -303,7 +304,7 @@ public class CustomizeController : MonoBehaviour
                 stickIndex = Mathf.Max(stickIndex, 0);                          // sinirlar azaltilma oldugu icin 0
 
                 sticks[stickIndex].SetActive(true);
-                stickText.text = items.stickItems[stickIndex].name;
+                stickText.SetText(items.stickItems[stickIndex].name);
 
                 updateButtons();
 
@@ -315,7 +316,7 @@ public class CustomizeController : MonoBehaviour
                 skinIndex = Mathf.Max(skinIndex, 0);                            // sinirlar azaltilma oldugu icin 0
                 characterSkin.material = skins[skinIndex];
 
-                skinText.text = items.skinItems[skinIndex].name;
+                skinText.SetText(items.skinItems[skinIndex].name);
 
                 updateButtons();
 
@@ -452,7 +453,7 @@ public class CustomizeController : MonoBehaviour
             {
                 hatIndex = i;                                       //index ayarlaniyor
                 hats[i].SetActive(true);                            // once esya aktif hale getiriliyor.
-                hatText.text = items.hatItems[hatIndex].name;       // sonra esyanin ismi yaziliyor. isim kayitlardan aliniyor. 
+                hatText.SetText(items.hatItems[hatIndex].name);       // sonra esyanin ismi yaziliyor. isim kayitlardan aliniyor. 
 
             }
 
@@ -466,7 +467,7 @@ public class CustomizeController : MonoBehaviour
             {
                 stickIndex = i;
                 sticks[i].SetActive(true);
-                stickText.text = items.stickItems[stickIndex].name;
+                stickText.SetText(items.stickItems[stickIndex].name);
 
 
             }
@@ -482,7 +483,7 @@ public class CustomizeController : MonoBehaviour
             {
                 skinIndex = i;
                 characterSkin.material = skins[i];// ve tuttugumuz renderer objesine indexteki material ataniyor.
-                skinText.text = items.skinItems[skinIndex].name;
+                skinText.SetText(items.skinItems[skinIndex].name);
 
                 break;
             }
