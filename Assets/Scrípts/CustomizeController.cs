@@ -13,7 +13,7 @@ public class CustomizeController : MonoBehaviour
 
     public AudioSource[] buttonSound;
 
-    public Text pointText;// mevcut puani gosteren text
+    public TMP_Text pointText;// mevcut puani gosteren text
 
 
     public GameObject[] hats;// karakterin sapkalarinin tutuldugu liste.objeler editor ile karakterin icinde gerekli konuma getirildi. pasif olarak tutuluyorlar.
@@ -368,7 +368,7 @@ public class CustomizeController : MonoBehaviour
         if (!items.hatItems[hatIndex].sold)                                                                   // burada buybutton[0] yani sapka satin alma butonunu aktif veya pasif olmasi durumunu kontrolu icin
         {                                                                                                     // indexteki yani gosterilen sapka iteminin items verilerindeki satin alinma durumunu kontrol ediyor.
             activateButton("buy", 0);
-            buyButtons[0].GetComponentInChildren<Text>().text = items.hatItems[hatIndex].price.ToString();     // item satilmamis ise buy butonu aktif oluyor, ve fiyat bilgisi gosteriliyor
+            buyButtons[0].GetComponentInChildren<TMP_Text>().text = items.hatItems[hatIndex].price.ToString();     // item satilmamis ise buy butonu aktif oluyor, ve fiyat bilgisi gosteriliyor
 
         }
         else if (!(pf.getI("CurrentHat") == hatIndex))                                                          // pref verisindeki giyilen sapka indexinin gosterilin sapka indexi ile esit olmamasi durumunda
@@ -382,7 +382,7 @@ public class CustomizeController : MonoBehaviour
         if (!items.stickItems[stickIndex].sold)
         {
             activateButton("buy", 1);
-            buyButtons[1].GetComponentInChildren<Text>().text = items.stickItems[stickIndex].price.ToString();  // $$$$$$$$  yukarinin aynisi tek fark sopa butonlari guncelleniyor.
+            buyButtons[1].GetComponentInChildren<TMP_Text>().text = items.stickItems[stickIndex].price.ToString();  // $$$$$$$$  yukarinin aynisi tek fark sopa butonlari guncelleniyor.
 
         }
         else if (!(pf.getI("CurrentStick") == stickIndex))
@@ -396,7 +396,7 @@ public class CustomizeController : MonoBehaviour
         if (!items.skinItems[skinIndex].sold)
         {
             activateButton("buy", 2);
-            buyButtons[2].GetComponentInChildren<Text>().text = items.skinItems[skinIndex].price.ToString();    //$$$$$$$$$$   yukarinin aynisi tek fark kkyafet butonlari guncelleniyor.
+            buyButtons[2].GetComponentInChildren<TMP_Text>().text = items.skinItems[skinIndex].price.ToString();    //$$$$$$$$$$   yukarinin aynisi tek fark kkyafet butonlari guncelleniyor.
 
 
         }

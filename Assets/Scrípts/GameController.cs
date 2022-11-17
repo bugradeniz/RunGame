@@ -25,6 +25,10 @@ public class GameController : MonoBehaviour
     public Slider progressBar;
     public GameObject settingsPanel;
     public GameObject exitPanel;
+    public GameObject winPanel;
+    public GameObject losePanel;
+    public GameObject loadingPanel;
+    public Slider loadingBar;
 
     [Header("Sound")]
     public AudioSource gameSound;
@@ -41,21 +45,42 @@ public class GameController : MonoBehaviour
     public int enemyNum;
     float maxDistance;
     public bool isEnding;
+    int levelIndex => SceneManager.GetActiveScene().buildIndex - 4;
 
     void Start()
     {
+        // baslangicta butun sesleri kayitli degerlere cekiyor.
 
-        for (int i = 0; i < fxSounds.Length; i++)
+        for (int i = 0; i < dieEffectPool.Count; i++)
         {
-            fxSounds[i].volume = pf.getF("FXSound");
+            dieEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
         }
-        gameSoundBar.value = pf.getF("GameSound");
-        fxSoundBar.value = pf.getF("FXSound");
+        for (int i = 0; i < bornEffectPool.Count; i++)
+        {
+            bornEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
+        }
+        for (int i = 0; i < splashEffectPool.Count; i++)
+        {
+            splashEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
+        }
+        buttonSound.volume = pf.getF("FXSound");
 
         gameSound.volume = pf.getF("GameSound");
 
 
+        //ayarlar ses barlarinin duzeyini kayitli degere cekiyor.
+
+        fxSoundBar.value = pf.getF("FXSound");
+        gameSoundBar.value = pf.getF("GameSound");
+
+
+
+
+        // ana menu muzigini tutan yok olmaz objeyi yok ediyor.
         Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
+
+        // karakterin baslangic pozisyonu ile bitis cizgisi arasindaki mesafe olculuyor.
+
         maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
         // oyun sonundaki dusmanlar otomatik olusturuluyor.
         createEnemies();
@@ -72,6 +97,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        // bitise kalan mesafeye gore ilerleme bari guncelleniyor.
         progressBar.value = 1 - (getCurrentDistance() / maxDistance);
 
 
@@ -121,14 +147,33 @@ public class GameController : MonoBehaviour
     public void lose()
     {
         stopEnemies();
-        Debug.Log("You Lose");
+        Invoke(nameof(loseDelay), 3f);
+
     }
+    public void loseDelay()
+    {
+        Time.timeScale = 0;
+        losePanel.SetActive(true);
+    }
+
+
 
     // kazanildiginda calisan fonksiyon. gelistirilecek
     public void win()
     {
+        if (levelIndex == pf.getI("LastLevel"))
+        {
+            pf.setI("LastLevel", levelIndex + 1);
+        }
         stopClones();
-        Debug.Log("You Win");
+
+        Invoke(nameof(winDelay), 3f);
+
+    }
+    public void winDelay()
+    {
+        Time.timeScale = 0;
+        winPanel.SetActive(true);
 
     }
 
@@ -490,47 +535,97 @@ public class GameController : MonoBehaviour
     }
 
     //$$$$$$$$$$$$$$$$$$$$ BARLAR
-    public void gameBar() {
-        pf.setF("GameSound",gameSoundBar.value);
+
+    // oyun ici muzik sesini degistiriyor
+    public void gameBar()
+    {
+        pf.setF("GameSound", gameSoundBar.value);
         gameSound.volume = gameSoundBar.value;
     }
+
+    // butun efektlerin icindeki ses elemanlarinin degerini degistiriyor.
     public void fxBar()
     {
         pf.setF("FXSound", fxSoundBar.value);
-        for (int i = 0; i < fxSounds.Length; i++)
+        for (int i = 0; i < dieEffectPool.Count; i++)
         {
-            fxSounds[i].volume = pf.getF("FXSound");
+            dieEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
         }
+        for (int i = 0; i < bornEffectPool.Count; i++)
+        {
+            bornEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
+        }
+        for (int i = 0; i < splashEffectPool.Count; i++)
+        {
+            splashEffectPool[i].GetComponent<AudioSource>().volume = pf.getF("FXSound");
+        }
+        buttonSound.volume = pf.getF("FXSound"); // ayarlar butonunun sesini de guncelliyor
+
     }
 
     ////$$$$$$$$$$$$$$$  BUTONLAR
+    ///
     public void settingsButton()
     {
+        buttonSound.Play();
         Time.timeScale = 0;
         settingsPanel.SetActive(true);
     }
-    public void replayButton() {
+    public void replayButton()
+    {
+        buttonSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
 
     }
-    public void playButton() {
+    public void playButton()
+    {
+        buttonSound.Play();
         Time.timeScale = 1;
         settingsPanel.SetActive(false);
     }
-    public void homeButton() {
+    public void homeButton()
+    {
+        buttonSound.Play();
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
 
 
     }
-    public void exitButton() {
+    IEnumerator loadAsync(int index)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        loadingPanel.SetActive(true);
+        while (!operation.isDone)
+        {
+            loadingBar.value = operation.progress + 0.1f;
+
+            yield return null;
+        }
+
+    }
+
+    // Aktif butonlara kendi indexi ile cagirilan fonksiyon.
+    public void nextLevelLoader()
+    {
+        buttonSound.Play();
+        Time.timeScale = 1;
+        StartCoroutine(loadAsync(levelIndex+5));     // leveller build settings de 5 den basladgi icin bir sonraki level +5 ile donduruluyor.
+    }
+    public void exitButton()
+    {
+        buttonSound.Play();
         exitPanel.SetActive(true);
     }
-    public void yesButton() {
+    public void yesButton()
+    {
+        buttonSound.Play();
         Application.Quit();
     }
-    public void noButton() {
+    public void noButton()
+    {
+        buttonSound.Play();
         exitPanel.SetActive(false);
     }
+
 }

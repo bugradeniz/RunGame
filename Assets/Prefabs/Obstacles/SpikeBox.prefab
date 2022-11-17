@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347009740563796
 Transform:
@@ -112,7 +112,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347009740592725
 Transform:
@@ -207,7 +207,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347009847074620
 Transform:
@@ -302,7 +302,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347009891182050
 Transform:
@@ -389,12 +389,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8458347010028376796}
+  - component: {fileID: 289918157}
   m_Layer: 0
   m_Name: SpikeBox
-  m_TagString: Obstacle
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010028376796
 Transform:
@@ -435,6 +436,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!136 &289918157
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8458347010028376793}
+  m_Material: {fileID: 13400000, guid: 0a07af288f4bc1048bdbe8a8139c5d6c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.30423594
+  m_Height: 0.6084719
+  m_Direction: 1
+  m_Center: {x: 0.00001168251, y: 0.0027767122, z: 0.16265172}
 --- !u!1 &8458347010072843633
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +467,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010072843634
 Transform:
@@ -547,7 +562,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010144395212
 Transform:
@@ -642,7 +657,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010184816372
 Transform:
@@ -737,7 +752,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010204926533
 Transform:
@@ -832,7 +847,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010307961904
 Transform:
@@ -927,7 +942,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010342459239
 Transform:
@@ -1022,7 +1037,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010384655276
 Transform:
@@ -1117,7 +1132,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010718079123
 Transform:
@@ -1212,7 +1227,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347010980889433
 Transform:
@@ -1307,7 +1322,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011042997314
 Transform:
@@ -1402,7 +1417,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011185735666
 Transform:
@@ -1497,7 +1512,7 @@ GameObject:
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011219888759
 Transform:
@@ -1592,7 +1607,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011249756018
 Transform:
@@ -1687,7 +1702,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011270589767
 Transform:
@@ -1782,7 +1797,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011378821742
 Transform:
@@ -1877,7 +1892,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011437577411
 Transform:
@@ -1972,7 +1987,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011454046161
 Transform:
@@ -2067,7 +2082,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011511853692
 Transform:
@@ -2162,7 +2177,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011524444147
 Transform:
@@ -2257,7 +2272,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011591005846
 Transform:
@@ -2352,7 +2367,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8458347011747432916
 Transform:

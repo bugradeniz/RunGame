@@ -69,7 +69,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697580780531190
 Transform:
@@ -151,7 +151,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581211512554
 Transform:
@@ -245,7 +245,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581262159214
 Transform:
@@ -327,7 +327,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581338215199
 Transform:
@@ -422,7 +422,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581341971838
 Transform:
@@ -517,7 +517,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581377126806
 Transform:
@@ -643,7 +643,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581572496690
 Transform:
@@ -738,7 +738,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581689093128
 Transform:
@@ -830,7 +830,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581714123639
 Transform:
@@ -868,7 +868,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697581816336163
 Transform:
@@ -963,7 +963,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582175661194
 Transform:
@@ -1178,7 +1178,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582201495670
 Transform:
@@ -1273,7 +1273,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582207655974
 Transform:
@@ -1368,7 +1368,7 @@ GameObject:
   m_TagString: Pusher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582379623478
 Transform:
@@ -1463,7 +1463,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582381392980
 Transform:
@@ -1550,12 +1550,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2282697582400651169}
+  - component: {fileID: 1847525636}
   m_Layer: 0
   m_Name: SpikeWall
-  m_TagString: Obstacle
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582400651169
 Transform:
@@ -1587,6 +1588,20 @@ Transform:
   m_Father: {fileID: 2282697581714123639}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1847525636
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2282697582400651170}
+  m_Material: {fileID: 13400000, guid: 0a07af288f4bc1048bdbe8a8139c5d6c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6614728
+  m_Height: 1.322946
+  m_Direction: 1
+  m_Center: {x: 0.027965784, y: 0.11599463, z: -0.13490051}
 --- !u!1 &2282697582427612615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1618,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582427612614
 Transform:
@@ -1685,7 +1700,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582755026111
 Transform:
@@ -1780,7 +1795,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582786651916
 Transform:
@@ -1875,7 +1890,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582876727962
 Transform:
@@ -1970,7 +1985,7 @@ GameObject:
   m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2282697582900779946
 Transform:
