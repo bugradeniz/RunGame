@@ -9,10 +9,11 @@ public class GameController : MonoBehaviour
 {
 
     Pref pf = new Pref();
+    AdManager aM = new AdManager();
+
     [Header("Controllers")]
     public CameraControl cameraControl;
     public CharacterControl characterControl;
-    public EnemyController enemyController;
 
     [Header("Reference Points")]
     public GameObject startPoint;
@@ -34,12 +35,14 @@ public class GameController : MonoBehaviour
     public AudioSource gameSound;
     public AudioSource buttonSound;
     public AudioSource[] fxSounds;
+
     [Header("Pools")]
     public List<GameObject> clonePool;
     public List<GameObject> enemyPool;
     public List<GameObject> dieEffectPool;
     public List<GameObject> bornEffectPool;
     public List<GameObject> splashEffectPool;
+
     [Header("Level Data")]
     public int currentCharacterNum = 1;
     public int enemyNum;
@@ -48,6 +51,30 @@ public class GameController : MonoBehaviour
     int levelIndex => SceneManager.GetActiveScene().buildIndex - 4;
 
     void Start()
+    {
+        aM.requestRA();
+        aM.requestIA();
+
+        setVolumes();
+
+        //ayarlar ses barlarinin duzeyini kayitli degere cekiyor.
+
+        fxSoundBar.value = pf.getF("FXSound");
+        gameSoundBar.value = pf.getF("GameSound");
+
+
+
+
+        // ana menu muzigini tutan yok olmaz objeyi yok ediyor.
+        Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
+
+        // karakterin baslangic pozisyonu ile bitis cizgisi arasindaki mesafe olculuyor.
+
+        maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
+        // oyun sonundaki dusmanlar otomatik olusturuluyor.
+        createEnemies();
+    }
+    void setVolumes()
     {
         // baslangicta butun sesleri kayitli degerlere cekiyor.
 
@@ -67,25 +94,7 @@ public class GameController : MonoBehaviour
 
         gameSound.volume = pf.getF("GameSound");
 
-
-        //ayarlar ses barlarinin duzeyini kayitli degere cekiyor.
-
-        fxSoundBar.value = pf.getF("FXSound");
-        gameSoundBar.value = pf.getF("GameSound");
-
-
-
-
-        // ana menu muzigini tutan yok olmaz objeyi yok ediyor.
-        Destroy(GameObject.FindGameObjectWithTag("MenuSound"));
-
-        // karakterin baslangic pozisyonu ile bitis cizgisi arasindaki mesafe olculuyor.
-
-        maxDistance = finishLine.transform.position.z - characterControl.transform.position.z;
-        // oyun sonundaki dusmanlar otomatik olusturuluyor.
-        createEnemies();
     }
-
     // Belirlenen deger kadar dusman olusturan fonksiyon.
     public void createEnemies()
     {
@@ -154,6 +163,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
         losePanel.SetActive(true);
+        aM.showCountedIA();
     }
 
 
@@ -174,6 +184,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
         winPanel.SetActive(true);
+        aM.showCountedIA();
 
     }
 
@@ -611,6 +622,10 @@ public class GameController : MonoBehaviour
         buttonSound.Play();
         Time.timeScale = 1;
         StartCoroutine(loadAsync(levelIndex+5));     // leveller build settings de 5 den basladgi icin bir sonraki level +5 ile donduruluyor.
+    }
+    public void rewardAdButton()
+    {
+        aM.showRA();
     }
     public void exitButton()
     {

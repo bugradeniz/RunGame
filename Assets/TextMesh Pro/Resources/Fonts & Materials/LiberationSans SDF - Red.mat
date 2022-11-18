@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 28268798066460806, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+        m_Texture: {fileID: 28684132378477856, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -45,8 +45,8 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TextureHeight: 512
-    - _TextureWidth: 512
+    - _TextureHeight: 1024
+    - _TextureWidth: 1024
     - _UnderlayDilate: 0
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: 0
@@ -57,7 +57,7 @@ Material:
     - _WeightNormal: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.23529412, g: 0, b: 0, a: 1}
+    - _FaceColor: {r: 2.670157, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []

@@ -7,6 +7,7 @@ using Util;
 public class MainMenuController : MonoBehaviour
 {
     Pref pf = new Pref(); // kutuphanedeki player prefs kontrolcu sinifina erisildi.
+    AdManager aM = new AdManager();
 
     public GameObject exitPanel;// cikis yapilsin mi sorusunu tutan panel.
     public AudioSource buttonSound;
@@ -18,6 +19,9 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         buttonSound.volume = pf.getF("FXSound");
+
+        aM.requestRA();
+        aM.showRA();
 
     }
     IEnumerator loadAsync(int index)

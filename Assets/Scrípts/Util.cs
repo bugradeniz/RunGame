@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
+using GoogleMobileAds.Api;
 namespace Util
 {
 
@@ -18,6 +18,7 @@ namespace Util
             {"defaultCurrentStick", 0},
             {"defaultCurrentSkin", 0},
             {"defaultLanguageIndex", 0},
+            {"defaultIACount", 0},
             {"defaultPoint", 200}
         };
         Dictionary<string, float> defaultDatasF = new Dictionary<string, float>(){
@@ -235,5 +236,125 @@ namespace Util
         }
 
     }
+
+    public class AdManager
+    {
+        Pref pf = new Pref();
+        private InterstitialAd iA;
+        private RewardedAd rA;
+        public void requestIA()
+        {
+            string adId;
+#if UNITY_ANDROID
+            adId = "ca-app-pub-3940256099942544/1033173712";
+#elif UNITY_IPHONE
+adId = "ca-app-pub-3940256099942544/4411468910";
+#else
+adId = "unexpected-Platform";
+#endif
+            iA = new InterstitialAd(adId);
+            AdRequest req = new AdRequest.Builder().Build();
+            iA.LoadAd(req);
+
+            iA.OnAdClosed += iAClosed;
+        }
+        void iAClosed(object sender, EventArgs args)
+        {
+            iA.Destroy();
+            requestIA();
+        }
+        public void showCountedIA()
+        {
+            if (pf.getI("IACount") >= 2)
+            {
+                if (iA.IsLoaded())
+                {
+                    iA.Show();
+                    pf.setI("IACount", 0);
+                }
+                else
+                {
+                    iA.Destroy();
+                    requestIA();
+                }
+            }
+            else
+            {
+                pf.setI("IACount", pf.getI("IACount" ) + 1);
+            }
+
+        }
+        public void showIA()
+        {
+
+            if (iA.IsLoaded())
+            {
+                iA.Show();
+
+            }
+            else
+            {
+                iA.Destroy();
+                requestIA();
+            }
+
+
+        }
+
+        public void requestRA()
+        {
+
+            string adId;
+#if UNITY_ANDROID
+            adId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+adId = "ca-app-pub-3940256099942544/1712485313";
+#else
+adId = "unexpected-Platform";
+#endif
+            rA = new RewardedAd(adId);
+            AdRequest req = new AdRequest.Builder().Build();
+            rA.LoadAd(req);
+
+            rA.OnAdClosed += rAClosed;
+            rA.OnUserEarnedReward += rAEarned;
+            rA.OnAdLoaded += rALoaded;
+        }
+
+        private void rALoaded(object sender, EventArgs e)
+        {
+            Debug.Log("reklam yuklendi");
+        }
+
+        private void rAEarned(object sender, Reward e)
+        {
+            string type = e.Type;
+            double amount = e.Amount;
+            Debug.Log("odul alindi: " +type+"---"+amount);
+        }
+
+        private void rAClosed(object sender, EventArgs e)
+        {
+            requestIA();
+            Debug.Log("reklam kapatildi");
+        }
+        public void showRA()
+        {
+
+            if (rA.IsLoaded())
+            {
+                rA.Show();
+
+            }
+            else
+            {
+                rA.Destroy();
+                requestRA();
+            }
+
+
+        }
+    }
+
 }
 
